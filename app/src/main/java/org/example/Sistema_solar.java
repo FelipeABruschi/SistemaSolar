@@ -5,6 +5,9 @@ import edu.princeton.cs.algs4.Draw;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.cos;
+
 public class Sistema_solar {
     private double x;
     private double y;
@@ -12,35 +15,42 @@ public class Sistema_solar {
     private double raiox;
     private double raioy;
     private Sol meu_sol;
-    private ArrayList<Planeta> meus_planetas = new ArrayList<>();
+    private Planeta[] planetas;
 
-    public Sistema_solar(){
+    public Sistema_solar(int numero_planetas){
         //Cordenadas x e y do centro das elipses
         this.x = 800;
         this.y = 450;
-        this.numero_planetas = 8;
+        this.numero_planetas = numero_planetas;
+        this.planetas = new Planeta[numero_planetas];
         this.raiox = 100;
         this.raioy = 50;
-        this.meu_sol = new Sol();
+        this.meu_sol = new Sol(x, y);
     }
 
     public void desenha(Draw draw){
-        int aux = meus_planetas.getFirst().getPosicao() - 1;
+        this.meu_sol.desenha(draw);
+
+        double a = this.raiox;
+        double b = this.raioy;
         for(int i = 0; i < numero_planetas; i++){
             draw.setPenColor(Color.WHITE);
-            draw.ellipse(this.x, this.y, this.raiox, this.raioy);
+            draw.ellipse(this.x, this.y, a, b);
             //aumenta o raio das elipses, cada elipse é a rota de um planeta
-            this.raiox += 75;
-            this.raioy += 50;
-            if(i == aux){
-                draw.setPenColor(meus_planetas.getFirst().getCor());
-                draw.filledCircle(this.x, this.y + this.raioy - 50, meus_planetas.getFirst().getTamanho());
-            }
+            a += 75;
+            b += 50;
         }
-        this.meu_sol.desenha(draw);
+    }
+
+    public void desenha_planeta(Draw draw, double angulo){
+        for(Planeta planeta : planetas){
+            if(planeta == null)
+                continue;
+            planeta.desenha(draw, x, y, raiox, raioy, angulo * planeta.getVelocidade());
+        }
     }
 
     public void add_planeta(Planeta planeta){
-        meus_planetas.add(planeta);
+        this.planetas[planeta.getPosicao() - 1] = planeta;
     }
 }

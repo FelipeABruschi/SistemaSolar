@@ -10,11 +10,11 @@ public class Sol {
     private double x;
     private double y;
 
-    public Sol(){
+    public Sol(double x, double y){
         //Cordenadas x e y do centro do sol, no centro do sistema solar
-        this.x = 800;
-        this.y = 450;
-        this.tamanho = 30;
+        this.x = x;
+        this.y = y;
+        this.tamanho = 40;
         this.cor = Color.ORANGE;
     }
 
