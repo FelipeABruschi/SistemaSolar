@@ -24,31 +24,32 @@ public class App {
         App app = new App();
         Sistema_solar solar = new Sistema_solar(8);
 
-        Planeta terra = new Planeta(3, 9, 5, new Color(173, 216, 230));
+        Planeta terra = new Planeta(3, 9, 16, false, new Color(0, 150, 200));
         solar.add_planeta(terra);
 
-        Planeta netuno = new Planeta(8, 20, 4, Color.BLUE);
+        Planeta netuno = new Planeta(8, 20, 1, false, new Color(0, 0, 100));
         solar.add_planeta(netuno);
 
-        Planeta jupiter = new Planeta(5, 20, 4, new Color(255, 165, 0));
+        Planeta jupiter = new Planeta(5, 20, 6, false, new Color(255, 200, 100));
         solar.add_planeta(jupiter);
 
-        Planeta marte = new Planeta(4, 7, 2, new Color(153, 0, 0));
+        Planeta marte = new Planeta(4, 7, 8, false, new Color(153, 0, 0));
         solar.add_planeta(marte);
 
-        Planeta urano = new Planeta(7, 12, 3, Color.CYAN);
+        Planeta urano = new Planeta(7, 12, 2, false, Color.CYAN);
         solar.add_planeta(urano);
 
-        Planeta mercurio = new Planeta(1, 4, 1, Color.DARK_GRAY);
+        Planeta mercurio = new Planeta(1, 4, 22, false, new Color(140,  70, 20));
         solar.add_planeta(mercurio);
 
-        Planeta venus = new Planeta(2, 5, 3, new Color(255, 140, 50));
+        Planeta venus = new Planeta(2, 5, 12, false, new Color(255, 140, 50));
         solar.add_planeta(venus);
 
-        Planeta saturno = new Planeta(6, 16, 6, new Color(210, 180, 90));
+        Planeta saturno = new Planeta(6, 16, 4, true, new Color(210, 180, 90));
         solar.add_planeta(saturno);
 
         double angulo = 0;
+        app.draw.enableDoubleBuffering();
 
         while (true) {
             solar.desenha(app.draw); // redesenha sol e órbitas (como se "limpasse" tudo)
@@ -59,7 +60,7 @@ public class App {
                 angulo = 0;
 
             app.draw.show();
-            Thread.sleep(20); // ~60 FPS
+            Thread.sleep(100); //
         }
     }
 }
