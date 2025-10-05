@@ -5,5 +5,4 @@ I used the edu.princeton.cs.algs4.Draw package to create a visual simulation of 
 
 <video width="640" controls>
   <source src="https://github.com/FelipeABruschi/SistemaSolar/blob/main/SolarSystem.webm" type="video/webm">
-  Your browser does not support the video tag.
 </video>
